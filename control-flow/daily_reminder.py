@@ -5,41 +5,41 @@ task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ").lower()
 time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-# Use a loop to ensure valid priority input
+# Ensure valid priority input
 while priority not in ["high", "medium", "low"]:
     print("Invalid priority! Please enter high, medium, or low.")
     priority = input("Priority (high/medium/low): ").lower()
 
-# Use a loop to ensure valid time-bound input  
+# Ensure valid time-bound input
 while time_bound not in ["yes", "no"]:
     print("Invalid input! Please enter yes or no.")
     time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-# Process the task based on priority using match case
+# Build a customized message based on priority and time sensitivity
 match priority:
     case "high":
-        # Use if statement to modify reminder based on time sensitivity
         if time_bound == "yes":
-            reminder = f"'{task}' is a high priority task that requires immediate attention today!"
+            details = f"'{task}' is a high priority task that requires immediate attention today!"
         else:
-            reminder = f"'{task}' is a high priority task. Please address it soon."
-    
+            details = f"'{task}' is a high priority task. Please address it soon."
     case "medium":
         if time_bound == "yes":
-            reminder = f"'{task}' is a medium priority task that should be completed today."
+            details = f"'{task}' is a medium priority task that should be completed today."
         else:
-            reminder = f"'{task}' is a medium priority task. Consider completing it this week."
-    
+            details = f"'{task}' is a medium priority task. Consider completing it this week."
     case "low":
         if time_bound == "yes":
-            reminder = f"'{task}' is a low priority task with a time constraint."
+            details = f"'{task}' is a low priority task with a time constraint."
         else:
-            reminder = f"'{task}' is a low priority task. Consider completing it when you have free time."
+            details = f"'{task}' is a low priority task. Consider completing it when you have free time."
 
-# Print the customized reminder
-print(f"\nReminder: {reminder}")
+# Compute immediate action flag
+immediate = "Yes" if time_bound == "yes" else "No"
 
-# Celebration message with loop for emphasis
+# ✅ Print a single line that starts with 'Reminder:' and includes priority + immediate flag
+print(f"Reminder: Task '{task}' | Priority: {priority} | Immediate action required: {immediate}. {details}")
+
+# Celebration message with loop for emphasis (optional)
 print("\nWell done on completing this project! Let the world hear about this milestone achieved.")
 for _ in range(3):
     print("🚀" * 5)
